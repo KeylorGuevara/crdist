@@ -34,6 +34,13 @@ Put crdist in your INSTALLED_APPS
         'crdist',
         )
 
+Run migration 
+
+.. code:: bash
+
+    $ python manage.py migrate    
+
+
 Usage
 ---------
 
