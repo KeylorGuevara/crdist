@@ -29,8 +29,8 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 version = __import__('crdist').get_version()
 
 setup(
-    author='Yonel Ceruto Glez',
-    author_email='yonelceruto@gmail.com',
+    author='Luis Zarate Montero',
+    author_email='luis.zarate@solvosoft.com',
     name='crdist',
     version=version,
     description='Costa Rican Geografic distribution for model admin in Django.',
