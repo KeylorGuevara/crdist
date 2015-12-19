@@ -24,7 +24,7 @@ class DistrictSelect(Select):
         dist = None
         canton = None
         prov = None
-        if value is None:
+        if value is None or value==-1 or value=="-1":
             value = ''
         else:
             dist = District.objects.get(pk=value)

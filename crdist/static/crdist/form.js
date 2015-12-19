@@ -17,7 +17,6 @@ function load_canton(obj_sel, initial){
 	url = document.getElementById('div_canton_' + name).getAttribute("href");
 	document.getElementById('div_district_' + name).innerHTML = "";
 	url = url + '&province='+obj_sel.value;
-	console.log("INITIAL "+initial);
 	if (initial != undefined){
 		url = url + "&initial="+initial;
 	}
