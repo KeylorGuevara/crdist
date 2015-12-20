@@ -1,5 +1,9 @@
 crdist
 =========
+
+.. image:: https://travis-ci.org/solvo/crdist.svg
+    :target: https://travis-ci.org/solvo/crdist
+
 Costa Rican Geografic distribution for model admin in Django
 
 .. note:: 
