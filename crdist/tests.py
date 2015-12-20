@@ -1,3 +1,5 @@
+#-*- coding: utf-8
+
 from django.test import TestCase
 from crdist.models import District
 from django import forms
@@ -72,7 +74,7 @@ class WidgetTestCase(TestCase):
 class CRForm(forms.Form):
     district = forms.ModelChoiceField(queryset=District.objects.all(),
                                   widget=DistrictSelect(),
-                                  label="Provincia")
+                                  label="Localización ")
 
 
 def view_test_form(request):
