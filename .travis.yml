@@ -9,7 +9,6 @@ env:
   - DJANGO=1.9
 install:
   - pip install -q Django==$DJANGO --use-mirrors
-
+  - pip install -q -e .
 script:
-  - cd demo
-  - python manage.py test
+  - python demo/manage.py test
