@@ -24,7 +24,7 @@ class WidgetTestCase(TestCase):
     def test_canton(self):
         response = self.client.get("/crdist/canton?name=province&province=4")
         self.assertEqual(response.status_code, 200)
-        obj = json.loads(response.content)
+        obj = json.loads(response.content.decode('utf-8'))
         self.assertEqual('div_canton_province', obj['id'])
         for x in [  'value=\"8\"',  # Heredia Central
                     'value=\"9\"',  # Barva
@@ -44,7 +44,7 @@ class WidgetTestCase(TestCase):
     def test_distric(self):
         response = self.client.get("/crdist/district?name=province&canton=9")
         self.assertEqual(response.status_code, 200)
-        obj = json.loads(response.content)
+        obj = json.loads(response.content.decode('utf-8'))
         self.assertEqual('div_district_province', obj['id'])
         for x in [  'value=\"715\"',    # San Pedro
                     'value=\"716\"',    # San Pablo
@@ -61,7 +61,7 @@ class WidgetTestCase(TestCase):
         self.assertNotEqual(result.find('select class="crdist"'), -1)
         response = self.client.get("/crdist/canton?name=province&province=4&attrs=7b22636c617373223a2022637264697374227d")
         self.assertEqual(response.status_code, 200)
-        obj = json.loads(response.content)
+        obj = json.loads(response.content.decode('utf-8'))
         self.assertNotEqual(obj['content'].find('select  class=\"crdist\"'), -1)        
         
 
