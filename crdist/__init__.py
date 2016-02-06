@@ -58,3 +58,6 @@ def get_git_changeset():
         return None
 
     return timestamp.strftime('%Y%m%d%H%M%S')
+
+
+default_app_config = 'crdist.apps.CrdistConfig'
