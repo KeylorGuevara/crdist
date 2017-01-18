@@ -41,7 +41,7 @@ setup(
     classifiers=CLASSIFIERS,
     install_requires=[
         'setuptools',
-        'django>=1.7',
+        'django>=1.8',
     ],
     packages=find_packages(),
     include_package_data=True,
