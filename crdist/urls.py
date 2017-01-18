@@ -5,7 +5,7 @@ Created on 16/12/2015
 '''
 
 
-from django.conf.urls import patterns, url
+from django.conf.urls import url
 from crdist.views import  get_distric, get_canton
 from django.conf import settings
 
