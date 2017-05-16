@@ -4,7 +4,9 @@ crdist
 .. image:: https://travis-ci.org/solvo/crdist.svg
     :target: https://travis-ci.org/solvo/crdist
 
-Costa Rican Geografic distribution for model admin in Django
+Costa Rican Geografic distribution for model admin in Django.
+
+Now django 1.11 compatible.
 
 .. note:: 
     The data is in Spanish.
@@ -37,6 +39,16 @@ Put crdist in your INSTALLED_APPS
         ...
         'crdist',
         )
+
+Include crdist in your urls.py
+
+.. code:: python
+
+	from django.conf.urls import url, include
+	urlpatterns = [
+		url(r'^crdist/', include("crdist.urls")),
+	]
+
 
 Run migration 
 
@@ -89,3 +101,17 @@ It's also ok use with admin interface, you can add some code in your *admin.py* 
     admin.site.register(Test, TestAdmin)
     
 We also support multiple relations in the same model, so you can display several widgets in the same page.
+
+Javascrit triggers 
+-------------------------
+
+- load_canton   { "dist": 'div_district_' + name, "canton": 'div_canton_' + name }
+- load_district   { "dist": 'div_district_' + name }
+
+.. code:: javascript
+
+    document.addEventListener("load_canton", function(e) {
+	  console.log(document.cantoncrdist.dist); 
+	  console.log(document.cantoncrdist.canton);   // id of divs
+	});
+    

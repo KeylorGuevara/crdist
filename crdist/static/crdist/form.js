@@ -1,4 +1,8 @@
 
+document.crdist = {};
+document.crdist.dist_event = new CustomEvent("load_district");
+document.crdist.canton_event = new CustomEvent("load_canton");
+
 function loadDoc(url) {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function() {
@@ -21,8 +25,41 @@ function load_canton(obj_sel, initial){
 		url = url + "&initial="+initial;
 	}
 	loadDoc(url);
+	document.canton_crdist = { "dist": 'div_district_' + name,
+		"canton": 'div_canton_' + name };
+	document.dispatchEvent(document.crdist.canton_event);
 }
 
+
+
+function KeySimulation(identificator) {
+	var e = document.createEvent("KeyboardEvent");
+	if (e.initKeyboardEvent) {  // Chrome, IE
+		e.initKeyboardEvent("keyup", true, true, document.defaultView, "Enter", 0, "", false, "");
+	} else { // FireFox
+    e.initKeyEvent("keyup", true, true, document.defaultView, false, false, false, false, 13, 0);
+	}
+	document.getElementById(identificator).dispatchEvent(e);
+}
+
+function district_change(e){
+	
+	var selid = this.id.split('_')
+	var name = selid[selid.length-1];
+	var text = "Costa Rica, ";
+	var sel = document.getElementById("id_province_" + name);
+	text += sel.options[sel.selectedIndex].text;
+	var sel = document.getElementById('id_canton_' + name);
+	text +=  ", "+sel.options[sel.selectedIndex].text;
+	var sel = this.children.id_location;
+	text +=  ", "+sel.options[sel.selectedIndex].text;		
+	var obj = document.getElementById('id_' + name +"_text");
+	if (obj != undefined ){
+		obj.value = text;
+		KeySimulation('id_' + name +"_text");
+	}
+	
+}
 
 function load_district(obj_sel, initial){
 	name=obj_sel.name.replace("canton_", '');
@@ -31,7 +68,13 @@ function load_district(obj_sel, initial){
 	if (initial != undefined){
 		url = url + "&initial=" + initial;
 	}
-	loadDoc(url);
+	loadDoc(url);	
+
+	var object = document.getElementById('div_district_' + name);
+	object.addEventListener("change", district_change);
+	
+	document.district_crdist = { "dist": 'div_district_' + name };
+	document.dispatchEvent(document.crdist.dist_event);
 }
 
 window.addEventListener('load',  function() {
