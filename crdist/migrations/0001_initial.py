@@ -28,7 +28,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True, serialize=False)),
                 ('code', models.CharField(max_length=16, unique=True, verbose_name='Code')),
                 ('name', models.CharField(max_length=64, verbose_name='Name')),
-                ('canton', models.ForeignKey(verbose_name='Canton', to='crdist.Canton')),
+                ('canton', models.ForeignKey(verbose_name='Canton', to='crdist.Canton', on_delete=models.CASCADE)),
             ],
             options={
                 'verbose_name_plural': 'Districts',
@@ -61,11 +61,11 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='district',
             name='region',
-            field=models.ForeignKey(verbose_name='Region', null=True, to='crdist.Region'),
+            field=models.ForeignKey(verbose_name='Region', null=True, to='crdist.Region', on_delete=models.CASCADE),
         ),
         migrations.AddField(
             model_name='canton',
             name='province',
-            field=models.ForeignKey(verbose_name='Province', to='crdist.Province'),
+            field=models.ForeignKey(verbose_name='Province', to='crdist.Province', on_delete=models.CASCADE),
         ),
     ]

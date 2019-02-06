@@ -35,7 +35,7 @@ class Region(models.Model):
 class Canton(models.Model):
     code = models.CharField(unique=True, max_length=16, verbose_name=_('Code'))
     name = models.CharField(max_length=64, verbose_name=_('Name'))
-    province = models.ForeignKey('Province', verbose_name=_('Province'))
+    province = models.ForeignKey('Province', verbose_name=_('Province'), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -49,8 +49,8 @@ class Canton(models.Model):
 class District(models.Model):
     code = models.CharField(unique=True, max_length=16, verbose_name=_('Code'))
     name = models.CharField(max_length=64, verbose_name=_('Name'))
-    canton = models.ForeignKey(Canton, verbose_name=_('Canton'))
-    region = models.ForeignKey(Region, null=True, verbose_name=_('Region'))
+    canton = models.ForeignKey(Canton, verbose_name=_('Canton'), on_delete=models.CASCADE)
+    region = models.ForeignKey(Region, null=True, verbose_name=_('Region'), on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name

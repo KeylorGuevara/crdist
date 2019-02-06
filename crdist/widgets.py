@@ -11,7 +11,10 @@ from django.utils.safestring import mark_safe
 from django.utils.html import format_html
 
 from crdist.models import Province, Canton, District
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except:
+    from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings
 from crdist.utils import obj_2_hexa
@@ -135,8 +138,3 @@ class DistrictSelectDj11(Select):
 DistrictSelect = DistrictSelectDj11
 if min11:
     DistrictSelect = DistrictSelectDj10
-
-
-
-
-    

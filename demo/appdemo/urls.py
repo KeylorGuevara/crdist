@@ -5,7 +5,7 @@ Created on 16/12/2015
 '''
 
 
-from django.conf.urls import patterns, url
+from django.conf.urls import  url
 from appdemo.views import view_test_form
 
 
